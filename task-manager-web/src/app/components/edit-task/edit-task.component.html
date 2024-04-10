@@ -1,0 +1,14 @@
+<!-- edit-task.component.html -->
+<div>
+    <h2>Modifier une tâche</h2>
+    <form (submit)="updateTask()">
+      <label>Titre</label>
+      <input type="text" [(ngModel)]="task.title" name="title" required>
+      <label>Description</label>
+      <textarea [(ngModel)]="task.description" name="description"></textarea>
+      <label>Date d'échéance</label>
+      <input type="date" [(ngModel)]="task.dueDate" name="dueDate" required>
+      <button type="submit">Enregistrer</button>
+    </form>
+  </div>
+  
