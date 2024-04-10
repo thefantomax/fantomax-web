@@ -38,4 +38,13 @@ export class HomeComponent implements OnInit {
     // Rediriger vers la page des tâches après la connexion
     // this.router.navigate(['/liste de taches']);
   }
+  goToTask(){
+    this.router.navigate(['/liste de taches'])
+  }
+  goToTaskAdd(){
+    this.router.navigate(['/ajoutTche'])
+  }
+  goToTaskUpdate(){
+    this.router.navigate(['/modificatiion'])
+  }
 }

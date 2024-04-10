@@ -6,18 +6,22 @@ import { AppComponent } from './app.component';
 import { InscriptionComponent } from './pages/inscription/inscription.component';
 import { ConnexionComponent } from './pages/connexion/connexion.component';
 import { TasksComponent } from './pages/tasks/tasks.component';
+import { TaskListComponent } from './components/task-list/task-list.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
     InscriptionComponent,
     ConnexionComponent,
-    TasksComponent
+    TasksComponent,
+    TaskListComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
+    FormsModule
 
   ],
   providers: [],
