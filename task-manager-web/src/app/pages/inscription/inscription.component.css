@@ -1,0 +1,8 @@
+.container-inscription{
+    border: 1px solid red;
+    width: 700px;
+    height: auto;
+    margin: auto;
+    margin-top: 150px;
+    padding: 10px;
+}

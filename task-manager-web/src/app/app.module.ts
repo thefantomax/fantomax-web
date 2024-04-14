@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { InscriptionComponent } from './pages/inscription/inscription.component';
 import { ConnexionComponent } from './pages/connexion/connexion.component';
 import { TasksComponent } from './pages/tasks/tasks.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { TasksComponent } from './pages/tasks/tasks.component';
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
+    HttpClientModule
 
   ],
   providers: [],

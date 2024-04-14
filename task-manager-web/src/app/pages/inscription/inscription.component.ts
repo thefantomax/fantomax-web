@@ -1,17 +1,8 @@
-// import { Component } from '@angular/core';
-
-// @Component({
-//   selector: 'app-inscription',
-//   templateUrl: './inscription.component.html',
-//   styleUrls: ['./inscription.component.css']
-// })
-// export class InscriptionComponent {
-
-// }
-
-// inscription.component.ts
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { catchError } from 'rxjs/operators';
+import { throwError } from 'rxjs';
 
 @Component({
   selector: 'app-inscription',
@@ -21,28 +12,51 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class InscriptionComponent implements OnInit {
   inscription: FormGroup;
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(private formBuilder: FormBuilder, private http: HttpClient) {
     this.inscription = this.formBuilder.group({
-      nom: ['', Validators.required],
+      lastname: ['', Validators.required],
+      firstname: ['', Validators.required],
+      username: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
-      motDePasse: ['', [Validators.required, Validators.minLength(6)]]
+      password: ['', [Validators.required, Validators.minLength(6)]]
     });
-   }
+  }
 
   ngOnInit(): void {
-    // this.inscription = this.formBuilder.group({
-    //   nom: ['', Validators.required],
-    //   email: ['', [Validators.required, Validators.email]],
-    //   motDePasse: ['', [Validators.required, Validators.minLength(6)]]
-    // });
+    
   }
 
-  onInscription() {
-    if (this.inscription.valid) {
-      // Envoyer les données d'inscription au serveur
-      console.log(this.inscription.value);
-      console.log('vous etes inscrit')
+  onInscription(): void {
+    if (this.inscription.invalid) {
+      this.markAllFieldsAsTouched();
+      return;
     }
+    const body = JSON.stringify(this.inscription.value);
+
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json'
+    });
+
+    this.http.post<any>('http://localhost:33300/api-v1/register', body, { headers })
+      .pipe(
+        catchError(error => {
+          console.error(error); 
+          alert('Erreur lors de l\'inscription');
+          return throwError(error);
+        })
+      )
+      .subscribe(response => {
+        console.log(response); 
+        alert('Inscription réussie');
+      });
+  }
+
+  private markAllFieldsAsTouched(): void {
+    Object.keys(this.inscription.controls).forEach(field => {
+      const control = this.inscription.get(field);
+      if (control !== null) {
+        control.markAsTouched({ onlySelf: true });
+      }
+    });
   }
 }
-

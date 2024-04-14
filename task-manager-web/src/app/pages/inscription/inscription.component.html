@@ -1,20 +1,27 @@
-<!-- inscription.component.html -->
-<div class="container">
+  <div>
     <h2>Inscription</h2>
     <form [formGroup]="inscription" (ngSubmit)="onInscription()">
-      <div class="form-group">
-        <label for="nom">Nom:</label>
-        <input type="text" class="form-control" id="nom" formControlName="nom" required>
+      <div>
+        <label for="lastanme">Nom:</label>
+        <input type="text" id="lastname" formControlName="lastname" required>
       </div>
-      <div class="form-group">
+      <div>
+        <label for="firstname">Prénom:</label>
+        <input type="text" id="firstname" formControlName="firstname" required>
+      </div>
+      <div>
+        <label for="username">Pseudo:</label>
+        <input type="text" id="username" formControlName="username" required>
+      </div>
+      <div>
         <label for="email">Email:</label>
-        <input type="email" class="form-control" id="email" formControlName="email" required>
+        <input type="email" id="email" formControlName="email" required>
       </div>
-      <div class="form-group">
-        <label for="motDePasse">Mot de passe:</label>
-        <input type="password" class="form-control" id="motDePasse" formControlName="motDePasse" required>
+      <div>
+        <label for="password">Mot de passe:</label>
+        <input type="password" id="password" formControlName="password" required>
       </div>
-      <button type="submit" class="btn btn-primary" [disabled]="!inscription.valid">S'inscrire</button>
+      <button type="submit" [disabled]="inscription.invalid">S'inscrire</button>
     </form>
   </div>
   

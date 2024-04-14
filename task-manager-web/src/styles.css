@@ -1,5 +1,10 @@
-/* You can add global styles to this file, and also import other style files */
-body {
-    color: black;
-    font-weight: 400;
-  }
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+body{
+  background-color: #fff6ff;
+}

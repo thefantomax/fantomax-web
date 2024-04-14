@@ -9,7 +9,7 @@ const routes: Routes = [
   { path: '', component: HomeComponent, },
   {path: 'inscription', component: InscriptionComponent},
   {path: 'connexion', component: ConnexionComponent},
-  {path : 'liste de taches', component : TasksComponent}
+  {path : 'taskList', component : TasksComponent},
 ];
 
 @NgModule({
