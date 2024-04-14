@@ -8,7 +8,7 @@ import { TaskService } from "../../services/task.service";
   styleUrls: ['./tasks.component.css']
 })
 export class TasksComponent implements OnInit {
-  user: any;
+  user!: any;
   tasks: any[] = [];
 
   constructor(
@@ -41,5 +41,24 @@ export class TasksComponent implements OnInit {
       }
     );
   }
+
+  deleteTask(taskId: string): void {
+    this.taskService.deleteTask(this.user.id, taskId).subscribe(
+      () => {
+        console.log('Tâche supprimée avec succès.');
+        // Rafraîchir la liste des tâches après la suppression si nécessaire
+        this.getTasks(this.user.id);
+      },
+      error => {
+        console.error('Erreur lors de la suppression de la tâche : ', error);
+        // Gérer l'erreur ou afficher un message d'erreur à l'utilisateur
+      }
+    );
 }
 
+
+  navigateToCreateTask(): void {
+    const user = { id: this.user.id };
+    this.router.navigate(['/create-task'], { state: { user } });
+  }
+}

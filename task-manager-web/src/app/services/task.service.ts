@@ -14,4 +14,14 @@ export class TaskService {
     const url = `${this.BaseApiUrl}/${userId}/tasks-list`; 
     return this.http.get<any[]>(url);
   }
+
+  createTask(userId: string, taskData: any): Observable<any> {
+    const url = `${this.BaseApiUrl}/${userId}/createTask`;
+    return this.http.post<any>(url, taskData);
+  }
+
+  deleteTask(userId: string, taskId: string): Observable<any> {
+    const url = `${this.BaseApiUrl}/deleteTask/${taskId}`;
+    return this.http.delete<any>(url);
+  }
 }

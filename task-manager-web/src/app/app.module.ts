@@ -7,20 +7,24 @@ import { InscriptionComponent } from './pages/inscription/inscription.component'
 import { ConnexionComponent } from './pages/connexion/connexion.component';
 import { TasksComponent } from './pages/tasks/tasks.component';
 import { HttpClientModule } from '@angular/common/http';
+import { CreateTaskComponent } from './pages/create-task/create-task.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
     InscriptionComponent,
     ConnexionComponent,
-    TasksComponent
+    TasksComponent,
+    CreateTaskComponent,
+    AppComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    HttpClientModule
-
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
