@@ -10,6 +10,9 @@ import { TaskService } from "../../services/task.service";
 export class TasksComponent implements OnInit {
   user!: any;
   tasks: any[] = [];
+  taskData: any = {
+    state:false,
+  };
 
   constructor(
     private taskService: TaskService,
@@ -54,8 +57,25 @@ export class TasksComponent implements OnInit {
         // Gérer l'erreur ou afficher un message d'erreur à l'utilisateur
       }
     );
-}
+  }
 
+  addTask(): void {
+    if (!this.taskData.description) {
+      console.error('Veuillez entrer un titre et une description pour la tâche.');
+      return;
+    }
+
+    this.taskService.addTask(this.user.id, this.taskData).subscribe(
+      () => {
+        console.log('Tâche ajoutée avec succès.');
+        this.getTasks(this.user.id);
+        this.taskData = {};
+      },
+      error => {
+        console.error('Erreur lors de l\'ajout de la tâche : ', error);
+      }
+    );
+  }
 
   navigateToCreateTask(): void {
     const user = { id: this.user.id };
