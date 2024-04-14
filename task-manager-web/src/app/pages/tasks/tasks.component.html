@@ -1,3 +1,74 @@
-<router-outlet>
+<!-- <router-outlet>
     <app-task-list></app-task-list>
-</router-outlet>
+</router-outlet> -->
+
+
+<nav class="navbar navbar-light bg-primary">
+    <div class="container-fluid">
+        <h1 style="color: aliceblue;">Liste des taches</h1>
+        <div class="d-flex">
+            <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-success">Ajouter une tache</button>
+        </div>
+    </div>
+</nav>
+
+<table class="table mt-3">
+    <thead>
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Titre</th>
+            <th scope="col">Etat</th>
+            <th scope="col">Description</th>
+            <th scope="col">Date de creation</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr  *ngFor="let row of taskList">
+            <td>{{row.id}}</td>
+            <td>{{row.titre}}</td>
+            <td>{{row.etat}}</td>
+            <td>{{row.description}}</td>
+            <td>{{row.date}}</td>
+            <td>
+                <button class="btn btn-info">Modifier</button>
+                <button class="btn btn-danger mx-3">Supprimer</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Ajouter une tache</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="formvalue">
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">Titre</label>
+              <input type="text" formControlName="titre" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+            </div>
+            <div class="mb-3 form-check">
+                <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                <label class="form-check-label" for="exampleCheck1">Etat</label>
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputPassword1" class="form-label">Description</label>
+              <input type="text" formControlName="description" class="form-control" id="exampleInputPassword1">
+            </div>
+            <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">Date de creation</label>
+                <input type="date" formControlName="dateCreation" class="form-control" id="exampleInputPassword1">
+            </div>
+          </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" id="cancel" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+        <button type="button" (click)="postTaskDetails()" class="btn btn-primary">Ajouter</button>
+      </div>
+    </div>
+  </div>
+</div>

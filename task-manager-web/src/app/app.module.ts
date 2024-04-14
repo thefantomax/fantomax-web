@@ -8,6 +8,7 @@ import { ConnexionComponent } from './pages/connexion/connexion.component';
 import { TasksComponent } from './pages/tasks/tasks.component';
 import { TaskListComponent } from './components/task-list/task-list.component';
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { FormsModule } from '@angular/forms';
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
 
   ],
   providers: [],

@@ -3,11 +3,11 @@
     <h2>Ajouter une nouvelle tâche</h2>
     <form (submit)="addTask()">
       <label>Titre</label>
-      <input type="text" [(ngModel)]="task.title" name="title" required>
+      <input type="text" `[formGroup]`="task.titre" name="title" required>
       <label>Description</label>
-      <textarea [(ngModel)]="task.description" name="description"></textarea>
+      <textarea `[formGroup]`="task.description" name="description"></textarea>
       <label>Date d'échéance</label>
-      <input type="date" [(ngModel)]="task.dueDate" name="dueDate" required>
+      <input type="date"`[formGroup]`="task.dueDate" name="dueDate" required>
       <button type="submit">Ajouter</button>
     </form>
   </div>

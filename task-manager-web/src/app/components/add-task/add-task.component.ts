@@ -20,7 +20,7 @@ import { TaskService } from 'src/app/services/task.service';
   styleUrls: ['./add-task.component.css']
 })
 export class AddTaskComponent implements OnInit {
-  task: Task = { id: 0, title: '', description: '', dueDate: new Date(), completed: false };
+  task: Task = { id: 0, titre: '', description: '', dueDate: new Date(), etat: false };
 
   constructor(private taskService: TaskService) { }
 
@@ -29,7 +29,7 @@ export class AddTaskComponent implements OnInit {
 
   addTask(): void {
     this.taskService.addTask(this.task);
-    this.task = { id: 0, title: '', description: '', dueDate: new Date(), completed: false };
+    this.task = { id: 0, titre: '', description: '', dueDate: new Date(), etat: false };
   }
 }
 

@@ -47,4 +47,8 @@ export class HomeComponent implements OnInit {
   goToTaskUpdate(){
     this.router.navigate(['/modificatiion'])
   }
+
+  goToTaskList(){
+    this.router.navigate(['/tache'])
+  }
 }

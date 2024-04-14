@@ -21,7 +21,7 @@ import { TaskService } from 'src/app/services/task.service';
   styleUrls: ['./edit-task.component.css']
 })
 export class EditTaskComponent implements OnInit {
-  task: Task = { id: 0, title: '', description: '', dueDate: new Date(), completed: false };
+  task: Task = { id: 0, titre: '', description: '', dueDate: new Date(), etat: false };
 
   constructor(private taskService: TaskService) { }
 

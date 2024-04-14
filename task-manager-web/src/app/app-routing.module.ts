@@ -13,7 +13,8 @@ const routes: Routes = [
   {path: 'connexion', component: ConnexionComponent},
   {path : 'listeTaches', component : TasksComponent},
   {path : 'ajoutTche', component : AddTaskComponent},
-  {path: 'modificatiion', component : EditTaskComponent}
+  {path: 'modificatiion', component : EditTaskComponent},
+  {path: 'tache', component : TasksComponent}
 ];
 
 @NgModule({
