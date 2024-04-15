@@ -57,4 +57,10 @@ export class TaskService {
     const url = `${this.BaseApiUrl}/${userId}/createTask`;
     return this.http.post<any>(url, taskData);
   }
+
+  updateTask(userId: string,taskId: string, updatedTask: any): Observable<any> {
+    const url = `${this.BaseApiUrl}/updateTask/${taskId}`;
+    return this.http.put<any>(url, updatedTask);
+  }
+
 }

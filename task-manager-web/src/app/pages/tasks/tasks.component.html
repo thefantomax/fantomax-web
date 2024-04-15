@@ -15,12 +15,17 @@
       <div  *ngFor="let task of tasks">
       <div class="line">
         <input class="checkOut" type="checkbox" name="task_checkbox" [(ngModel)]="task.state">
-        <div class="left">
+        <!-- <div class="left">
             <span class="title">{{task.title}}</span>
             <span class="description">{{task.description}}</span>
-        </div>
+        </div> -->
+        <div class="left">
+          <input type="text" id="input-box" [(ngModel)]="task.title">
+        <input type="text" id="input-box" [(ngModel)]="task.description">
+      </div>
         <div class="right">
-            <span (click)="deleteTask(task.id)">Delete</span>
+          <span (click)="updateTask(task.id)">Update</span>
+          <span (click)="deleteTask(task.id)">Delete</span>
         </div>
       </div>
       </div>

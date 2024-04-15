@@ -77,6 +77,26 @@ export class TasksComponent implements OnInit {
     );
   }
 
+  updateTask(taskId: string): void {
+    const updatedTask = this.tasks.find(task => task.id === taskId);
+    if (!updatedTask) {
+      console.error('Tâche non trouvée.');
+      return;
+    }
+  
+    this.taskService.updateTask(this.user.id,taskId, updatedTask).subscribe(
+      () => {
+        console.log('Tâche mise à jour avec succès.');
+        console.log(updatedTask)
+        this.getTasks(this.user.id);
+      },
+      error => {
+        console.error('Erreur lors de la mise à jour de la tâche : ', error);
+      }
+    );
+  }
+
+
   navigateToCreateTask(): void {
     const user = { id: this.user.id };
     this.router.navigate(['/create-task'], { state: { user } });
